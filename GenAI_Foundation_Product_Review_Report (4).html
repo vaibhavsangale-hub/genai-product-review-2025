@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Generative AI Foundation (90 Hours) — Product Review Report</title>
+<style>
+  :root {
+    --bg: #0b0f14;
+    --card: #0f1620;
+    --muted: #a7b0bd;
+    --text: #e9eef5;
+    --border: rgba(255,255,255,.08);
+    --accent: #7aa2ff;
+    --accent2: #55d6be;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1000px 500px at 15% 10%, rgba(122,162,255,.18), transparent 60%),
+                radial-gradient(900px 500px at 80% 20%, rgba(85,214,190,.14), transparent 55%),
+                var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 18px 64px;
+  }
+  .top {
+    display: grid;
+    grid-template-columns: 1.4fr .6fr;
+    gap: 16px;
+    align-items: start;
+  }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    letter-spacing: .2px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .pillrow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .pill {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.03);
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .nav {
+    position: sticky;
+    top: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.03);
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .nav h3 {
+    margin: 0 0 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--muted);
+  }
+  .nav a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+  .nav a:hover {
+    background: rgba(255,255,255,.05);
+  }
+  .section {
+    margin-top: 22px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.03);
+    border-radius: 16px;
+    padding: 18px;
+  }
+  .section h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+  .section p {
+    margin: 8px 0;
+    color: var(--text);
+  }
+  .muted { color: var(--muted); }
+  .qbox {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 14px;
+    border: 1px dashed rgba(255,255,255,.16);
+    border-radius: 14px;
+    background: rgba(0,0,0,.12);
+    margin: 12px 0 6px;
+  }
+  .qmark {
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    display: grid; place-items: center;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid rgba(122,162,255,.25);
+    background: rgba(122,162,255,.06);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .card {
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,.15);
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .card-title {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    margin-bottom: 10px;
+  }
+  .metric {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+  .kpi {
+    display: inline-block;
+    min-width: 50px;
+  }
+  .bar {
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.08);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.07);
+  }
+  .fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(122,162,255,.9), rgba(85,214,190,.85));
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,.18);
+  }
+  .table th, .table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    font-size: 13px;
+    white-space: pre-wrap;
+  }
+  .table thead th {
+    position: sticky;
+    top: 0;
+    background: rgba(15,22,32,.92);
+    backdrop-filter: blur(8px);
+    z-index: 2;
+    color: #dfe8f7;
+  }
+  .table .group {
+    text-align: center;
+    font-weight: 700;
+    color: #dfe8f7;
+  }
+  .table .sticky {
+    position: sticky;
+    left: 0;
+    background: rgba(15,22,32,.92);
+    backdrop-filter: blur(8px);
+    z-index: 1;
+    font-weight: 600;
+  }
+  .wide {
+    display: block;
+    overflow-x: auto;
+  }
+  .callout {
+    border-left: 3px solid rgba(85,214,190,.9);
+    background: rgba(85,214,190,.06);
+    padding: 12px 12px;
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+  ul {
+    margin: 8px 0 0 18px;
+  }
+  li {
+    margin: 6px 0;
+  }
+  .yes { color: #7fe1c3; font-weight: 700; }
+  .no { color: #ff9aa2; font-weight: 700; }
+  .footer {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  @media (max-width: 900px) {
+    .top { grid-template-columns: 1fr; }
+    .nav { position: relative; top: 0; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Generative AI Foundation — Product Review Report</h1>
+        <div class="subtitle">Program duration: <b>90 hours</b> • Report date: December 16, 2025 • Format: scrollable web report</div>
+        <div class="pillrow">
+          <div class="pill">Goal: align curriculum + brochure + career outcomes to learner mix</div>
+          <div class="pill">Inputs used: current curriculum (modules/topics/hours) + sales performance table + sales feedback + competitor benchmark</div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <h3>Jump to</h3>
+        <a href="#exec">Executive summary</a>
+        <a href="#demo">Demographics + target outcomes</a>
+        <a href="#sales">Sales performance table (as-is)</a>
+        <a href="#curr">Curriculum table (as-is)</a>
+        <a href="#vos">Voice of sales</a>
+        <a href="#comp">Competitor benchmark</a>
+        <a href="#check">Coverage checklist</a>
+        <a href="#changes">Recommended change-set</a>
+      </div>
+    </div>
+
+    <section class="section" id="exec">
+      <h2>Executive summary</h2>
+      <p><b>Key observation:</b> the learner mix is heavily <b>non-tech</b> and largely <b>freshers</b>, but there is a meaningful <b>working professional</b> segment. The current curriculum strongly emphasizes text/visual/audio creation, while working professionals are asking for operational automation and productivity outcomes.</p>
+      <div class="callout">
+        <p><b>What’s driving the product pressure:</b></p>
+        <ul>
+          <li>Mismatch: working professionals want “AI at work” (automation, reporting, productivity) more than text/audio/video creation.</li>
+          <li>Brochure perception: tools count reduced from <b>30 tools</b> (older pitch) to <b>12 tools</b> (current brochure), reducing perceived value.</li>
+          <li>Price expectation: at <b>₹28,000</b>, learners expect visible, structured career outcomes and stronger career assistance packaging.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <h2>Demographics + the two big questions</h2>
+      <p class="muted">Demographics (as provided) are included below to anchor the target persona decision.</p>
+      
+<div class="cards">
+  <div class="card">
+    <div class="card-title">Learner Mix</div>
+    <div class="metric"><span class="kpi"><b>70%</b></span> Freshers</div>
+    <div class="bar"><div class="fill" style="width:70%"></div></div>
+    <div class="metric"><span class="kpi"><b>30%</b></span> Working Professionals (Non-tech)</div>
+    <div class="bar"><div class="fill" style="width:30%"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Tech vs Non-tech</div>
+    <div class="metric"><span class="kpi"><b>90%</b></span> Non-tech</div>
+    <div class="bar"><div class="fill" style="width:90%"></div></div>
+    <div class="metric"><span class="kpi"><b>10%</b></span> Tech</div>
+    <div class="bar"><div class="fill" style="width:10%"></div></div>
+  </div>
+</div>
+
+
+      <div class="qbox">
+        <div class="qmark">?</div>
+        <div>
+          <div style="font-size:16px; font-weight:700; margin-bottom:4px;">Whom are we targeting?</div>
+          <div class="muted">Primary reality today: <b>90%</b> non-tech learners; <b>70%</b> freshers; <b>30%</b> working professionals (non-tech).</div>
+        </div>
+      </div>
+
+      <div class="qbox">
+        <div class="qmark">?</div>
+        <div>
+          <div style="font-size:16px; font-weight:700; margin-bottom:4px;">What is the outcome of the program?</div>
+          <div class="muted">Current outcome story is strong on GenAI awareness + content creation + agentic concepts, but weaker on “operational ROI” and “career packaging” for the <b>₹28,000</b> buyer.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sales">
+      <h2>Sales performance (table pasted as-is)</h2>
+      <p class="muted">No edits were made to the data; this is a direct rendering of the attached table: PD → ADS → Total.</p>
+      <table class="table wide">
+<thead>
+<tr>
+<th class="sticky">Month</th>
+<th colspan="4" class="group">PD</th>
+<th colspan="4" class="group">ADS (20 WF:80Freshers)</th>
+<th colspan="4" class="group">Total</th>
+</tr>
+<tr>
+<th class="sticky">Month</th>
+<th>Leads</th>
+<th>Called</th>
+<th>sold</th>
+<th>Conversion Rate</th>
+<th>Leads</th>
+<th>Called</th>
+<th>sold</th>
+<th>Conversion Rate</th>
+<th>Leads</th>
+<th>Called</th>
+<th>sold</th>
+<th>Conversion Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="sticky">July</td>
+<td>1295</td>
+<td>1273</td>
+<td>94</td>
+<td>7.26%</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1295</td>
+<td>1273</td>
+<td>94</td>
+<td>7.26%</td>
+</tr>
+<tr>
+<td class="sticky">August</td>
+<td>2170</td>
+<td>2112</td>
+<td>120</td>
+<td>5.53%</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2170</td>
+<td>2112</td>
+<td>120</td>
+<td>5.53%</td>
+</tr>
+<tr>
+<td class="sticky">September</td>
+<td>867</td>
+<td>845</td>
+<td>50</td>
+<td>5.77%</td>
+<td>2287</td>
+<td>2165</td>
+<td>34</td>
+<td>1.49%</td>
+<td>3154</td>
+<td>3010</td>
+<td>84</td>
+<td>3.63%</td>
+</tr>
+<tr>
+<td class="sticky">October</td>
+<td>2097</td>
+<td>2992</td>
+<td>130</td>
+<td>6.20%</td>
+<td>2925</td>
+<td>2690</td>
+<td>44</td>
+<td>1.50%</td>
+<td>5022</td>
+<td>5682</td>
+<td>174</td>
+<td>3.85%</td>
+</tr>
+<tr>
+<td class="sticky">November (PWC)</td>
+<td>844</td>
+<td>793</td>
+<td>56</td>
+<td>6.64%</td>
+<td>3686</td>
+<td>3486</td>
+<td>42</td>
+<td>1.14%</td>
+<td>4530</td>
+<td>4279</td>
+<td>98</td>
+<td>3.89%</td>
+</tr>
+<tr>
+<td class="sticky">December</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="sticky"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="sticky"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="sticky"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="sticky"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="sticky"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>  </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+      <p class="footer">Quick read: Total conversion trends drop from <b>7.26%</b> (July) to <b>3.63%</b> (September) after ADS starts contributing volume, with ADS conversion around <b>1.49%</b>–<b>1.14%</b> in Sep–Nov.</p>
+    </section>
+
+    <section class="section" id="curr">
+      <h2>Current curriculum snapshot (modules/topics/hours)</h2>
+      <p class="muted">This section is generated from the attached curriculum pivot (module/topic/hour structure), keeping the module names and hour counts intact.</p>
+
+      <h3 style="margin:14px 0 8px; font-size:15px;">A) Section-wise hours summary</h3>
+      <table class="table"><thead><tr><th>Section</th><th>Total Hours</th></tr></thead><tbody><tr><td>Module 1: Generative AI Foundations</td><td>12</td></tr>
+<tr><td>Module 2: Conversational AI &amp; Text Content Generation</td><td>12</td></tr>
+<tr><td>Module 3: AI for Visual Content Creation &amp; Processing</td><td>10</td></tr>
+<tr><td>Module 4: AI for Audio and Speech Processing</td><td>3</td></tr>
+<tr><td>Module 5: Agentic AI/ AI Agents</td><td>7</td></tr>
+<tr><td>Module 6: Building GenAI Solutions (Without Coding)</td><td>12</td></tr>
+<tr><td>Module 7: GenAI use cases by Industry &amp; Business Function</td><td>18</td></tr>
+<tr><td>Module 8: AI Safety, Ethics &amp; Risk Management</td><td>3</td></tr>
+<tr><td>Career Readiness</td><td>6</td></tr>
+<tr><td>Capstone</td><td>7</td></tr>
+<tr><td>ET</td><td>0</td></tr>
+<tr><td>Grand Total</td><td>90</td></tr></tbody></table>
+
+      <h3 style="margin:16px 0 8px; font-size:15px;">B) Detailed breakdown (topics + hours)</h3>
+      <table class="table wide"><thead><tr><th>Section</th><th>Topic</th><th>Hours</th></tr></thead><tbody><tr><td>Module 1: Generative AI Foundations</td><td>AI Fundamentals and Types</td><td>3</td></tr>
+<tr><td>Module 1: Generative AI Foundations</td><td>GenAI Revolution: From RAG to Frontier Models, Industry Disruption, and Career Transformation</td><td>3</td></tr>
+<tr><td>Module 1: Generative AI Foundations</td><td>Generative AI &amp; LLMs: Disrupting Industries, Redefining Careers</td><td>3</td></tr>
+<tr><td>Module 1: Generative AI Foundations</td><td>Practical Ways of Working with LLMs &amp; AI Agents</td><td>3</td></tr>
+<tr><td>Module 2: Conversational AI &amp; Text Content Generation</td><td>Advanced Prompt Engineering Part 1</td><td>3</td></tr>
+<tr><td>Module 2: Conversational AI &amp; Text Content Generation</td><td>Advanced Prompt Engineering Part 2</td><td>3</td></tr>
+<tr><td>Module 2: Conversational AI &amp; Text Content Generation</td><td>Prompt Engineering &amp; Conversational AI in Action</td><td>3</td></tr>
+<tr><td>Module 2: Conversational AI &amp; Text Content Generation</td><td>Using LLM for NLP and Doubt Clearing</td><td>3</td></tr>
+<tr><td>Module 3: AI for Visual Content Creation &amp; Processing</td><td>AI for Video - Part 2</td><td>1</td></tr>
+<tr><td>Module 3: AI for Visual Content Creation &amp; Processing</td><td>AI for Video: Search, Generation &amp; Professional Content Creation</td><td>3</td></tr>
+<tr><td>Module 3: AI for Visual Content Creation &amp; Processing</td><td>AI for Visual Data: From Images to Insights</td><td>3</td></tr>
+<tr><td>Module 3: AI for Visual Content Creation &amp; Processing</td><td>Image Creation Mastery &amp; Optimization</td><td>3</td></tr>
+<tr><td>Module 4: AI for Audio and Speech Processing</td><td>AI for Audio Mastery</td><td>3</td></tr>
+<tr><td>Module 5: Agentic AI/ AI Agents</td><td>Agentic AI in Action: Data, Documents, and Device Control</td><td>3</td></tr>
+<tr><td>Module 5: Agentic AI/ AI Agents</td><td>AI Agents: Core Capabilities and Real-World Integrations</td><td>3</td></tr>
+<tr><td>Module 5: Agentic AI/ AI Agents</td><td>Building Multi-agent systems</td><td>1</td></tr>
+<tr><td>Module 6: Building GenAI Solutions (Without Coding)</td><td>AI Agent Workflows</td><td>3</td></tr>
+<tr><td>Module 6: Building GenAI Solutions (Without Coding)</td><td>RAG Chatbots (Part 1)</td><td>3</td></tr>
+<tr><td>Module 6: Building GenAI Solutions (Without Coding)</td><td>RAG Chatbots (Part 2 – Continued)</td><td>3</td></tr>
+<tr><td>Module 6: Building GenAI Solutions (Without Coding)</td><td>Workflow Automation with Make.com</td><td>3</td></tr>
+<tr><td>Module 7: GenAI use cases by Industry &amp; Business Function</td><td>BFSI – Banking &amp; Insurance</td><td>3</td></tr>
+<tr><td>Module 7: GenAI use cases by Industry &amp; Business Function</td><td>Education</td><td>3</td></tr>
+<tr><td>Module 7: GenAI use cases by Industry &amp; Business Function</td><td>IT Service Management</td><td>3</td></tr>
+<tr><td>Module 7: GenAI use cases by Industry &amp; Business Function</td><td>Media &amp; Entertainment</td><td>3</td></tr>
+<tr><td>Module 7: GenAI use cases by Industry &amp; Business Function</td><td>Retail &amp; Ecommerce and Marketing &amp; Sales</td><td>3</td></tr>
+<tr><td>Module 7: GenAI use cases by Industry &amp; Business Function</td><td>Supply Chain &amp; Manufacturing</td><td>3</td></tr>
+<tr><td>Module 8: AI Safety, Ethics &amp; Risk Management</td><td>Responsible AI, Ethics &amp; Safety</td><td>3</td></tr>
+<tr><td>Career Readiness</td><td>AI Powered LinkedIn Optimization</td><td>3</td></tr>
+<tr><td>Career Readiness</td><td>AI Powered Resume Building &amp; Job Search Intelligence</td><td>3</td></tr>
+<tr><td>Capstone</td><td>Capstone Check In</td><td>4</td></tr>
+<tr><td>Capstone</td><td>Capstone Showcase &amp; Peer Review</td><td>3</td></tr>
+<tr><td>ET</td><td>ET1</td><td>0</td></tr>
+<tr><td>ET</td><td>ET2</td><td>0</td></tr></tbody></table>
+
+      <div class="callout">
+        <p><b>What this structure optimizes for today:</b></p>
+        <ul>
+          <li>Strong foundation on GenAI basics + prompt engineering + multimodal creation.</li>
+          <li>Good inclusion of agents and no-code building blocks (RAG chatbots, Make.com) within <b>12 hours</b>.</li>
+          <li>Industry use-cases are covered via a dedicated <b>18 hours</b> module.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="vos">
+      <h2>Voice of sales (feedback captured)</h2>
+      <ul>
+        <li>Curriculum feels less relevant for working professionals who expect operational work and automation outcomes more than text/audio/video content creation.</li>
+        <li>Earlier pitch had <b>30 tools</b> in the browser; current brochure shows only <b>12 tools</b>, reducing perceived value.</li>
+        <li>Stronger expectation for no-code / low-code platforms (workflow automation, copilots, productivity tools).</li>
+        <li>At <b>₹28,000</b>, learners expect clearer and stronger career assistance packaging, not just “some sessions”.</li>
+      </ul>
+
+      <div class="callout">
+        <p><b>Your analysis (captured and reflected):</b> shift time away from text/audio/video, add more operational automation, and increase tool breadth in the brochure to improve conversion and perceived ROI.</p>
+      </div>
+    </section>
+
+    <section class="section" id="comp">
+      <h2>Competitor benchmark (curriculum pasted as provided)</h2>
+      <p class="muted">This is included verbatim in table form to enable direct comparison.</p>
+      <table class="table wide"><thead><tr><th>Module</th><th>Curriculum (as provided)</th></tr></thead><tbody><tr><td>MODULE 1: AI Introduction</td><td>What is Artificial Intelligence?
+Definitions and Common Misconceptions
+AI vs Machine Learning vs Deep Learning
+Generative AI vs Traditional AI
+Rule-Based Systems vs Learning Models
+Examples: ChatGPT, DALLE vs Expert Systems
+Types of AI Automation: Communication, Productivity, Creativity, Data, Security
+Real-World Applications: HR, Marketing, Healthcare, Finance
+History and Evolution of AI: From Turing Test to Large Language Models
+Milestones: Deep Blue, Watson, AlphaGo, GPT, Gemini</td></tr>
+<tr><td>MODULE 2: Prompt Engineering</td><td>Types of Prompts: Zero-shot, One-shot, Few-shot
+Principles of Effective Prompt Design
+Techniques &amp; Strategies: Chaining, Parameters, Feedback
+Applications: Content, Data, Code, Support
+Tools &amp; Platforms: OpenAI, Hugging Face, APIs
+Challenges and Limitations</td></tr>
+<tr><td>MODULE 3: Content Generation using AI</td><td>Overview: What is AI-Generated Content?
+Types: Text, Visuals, Audio/Video
+Popular Tools: ChatGPT, Jasper, DALLE, Synthesis
+Workflow &amp; Best Practices
+Customization &amp; Personalization
+Measuring Effectiveness
+Case Studies: HubSpot, Canva</td></tr>
+<tr><td>MODULE 4: Data Analysis using Generative AI</td><td>Introduction &amp; Role of AI in Data
+Understanding Data Requirements
+Data Basics: Types &amp; Frameworks
+Data Cleaning with No-Code AI
+Data Visualization &amp; Storytelling
+Creating Dashboards with AI
+Generating Insights &amp; Advanced Queries
+Data-Driven Decision Making
+Predictive Analytics with Generative AI</td></tr>
+<tr><td>MODULE 5: Market Research using AI</td><td>What is Market Research &amp; Why It Matters
+Key Frameworks: 5C’s, SWOT
+Challenges in Traditional Research
+How AI is Transforming Market Research
+Use Cases: Personas, Benchmarking, Trends, Surveys, VOC</td></tr>
+<tr><td>MODULE 6: Project Management using AI</td><td>Introduction &amp; Purpose
+Key Challenges in PM
+Project Management Frameworks: PMBOK, Agile/Scrum
+AI in PM: Scheduling, Risk, CRM, Reporting
+Tools Introduction &amp; Hands-on Demos
+Live Use-Case Walkthrough</td></tr>
+<tr><td>MODULE 7: Ideation and Brainstorming using AI</td><td>Introduction to Ideation &amp; Problem Solving
+Ideation Techniques: Design Thinking, Storyboarding, Mind Mapping
+Brainstorming Techniques: SCAMPER, 6-3-5, 5 Whys
+Problem Solving Frameworks: 7-Step, McKinsey, RCA
+Traditional vs AI-Powered Brainstorming
+GEN AI Tools Overview
+Case Studies: Colgate, Adobe, Canva
+Collaborative Brainstorming Platforms
+Integrating Ideation Frameworks with Tools</td></tr>
+<tr><td>MODULE 8: Professional Development using AI</td><td>Resume Optimization &amp; ATS Matching
+Career Path Mapping &amp; Skill Gap Analysis
+Personal Growth Roadmaps with SWOT
+Personalized Learning via AI Recommendations</td></tr>
+<tr><td>MODULE 9: Soft Skills Development using AI</td><td>Introduction to Soft Skills and Frameworks
+AI-Enabled Communication Coaching (Grammarly, Wordtune)
+Emotional Intelligence &amp; Self-Awareness (Replika, Moodfit)
+Leadership &amp; Team Collaboration (Lattice, Mursion)
+Personalized Development Plans (Pymetrics, Plum)</td></tr>
+<tr><td>MODULE 10: Protecting Workspace Data while using AI</td><td>Why AI and Data Protection Must Align
+Types of Data at Risk
+How AI Tools Handle Data
+Best Practices for Safe AI Usage
+Tool-Specific Features: ChatGPT Enterprise, Copilot, Claude</td></tr>
+<tr><td>MODULE 11: Microsoft Co-Pilot for AI Enhanced Productivity (Optional)</td><td>What is Microsoft Copilot?
+Integration Across Microsoft 365
+Core Capabilities: Word, Excel, PowerPoint, Outlook, Teams
+Copilot vs Standalone AI Tools</td></tr>
+<tr><td>MODULE 12: Workflow Automation using AI (Optional)</td><td>What is Workflow Automation?
+AI vs Traditional Automation
+Components of AI Workflow Automation
+Step-by-Step Workflow Building
+No-Code Tools and Intelligent Agents</td></tr></tbody></table>
+    </section>
+
+    <section class="section" id="check">
+      <h2>Coverage checklist vs competitor</h2>
+      <p class="muted">Checklist uses “Yes/No” based on explicit coverage in the current curriculum.</p>
+      <table class="table wide"><thead><tr><th>Competitor Module</th><th>Covered in our curriculum?</th><th>Where / Evidence in our curriculum</th><th>If not covered, what it unlocks for working professionals</th></tr></thead><tbody><tr><td>MODULE 1: AI Introduction</td><td>Yes</td><td>Module 1: Generative AI Foundations</td><td></td></tr>
+<tr><td>MODULE 2: Prompt Engineering</td><td>Yes</td><td>Module 2: Conversational AI &amp; Text Content Generation</td><td></td></tr>
+<tr><td>MODULE 3: Content Generation using AI</td><td>Yes</td><td>Module 2 + Module 3 + Module 4</td><td></td></tr>
+<tr><td>MODULE 4: Data Analysis using Generative AI</td><td>No</td><td>Not explicitly covered in current curriculum</td><td>Operational ROI use-cases (automation, reporting, decision support, productivity) that increase perceived value</td></tr>
+<tr><td>MODULE 5: Market Research using AI</td><td>No</td><td>Not explicitly covered in current curriculum</td><td>Operational ROI use-cases (automation, reporting, decision support, productivity) that increase perceived value</td></tr>
+<tr><td>MODULE 6: Project Management using AI</td><td>No</td><td>Not explicitly covered in current curriculum</td><td>Operational ROI use-cases (automation, reporting, decision support, productivity) that increase perceived value</td></tr>
+<tr><td>MODULE 7: Ideation and Brainstorming using AI</td><td>No</td><td>Not explicitly covered in current curriculum</td><td>Operational ROI use-cases (automation, reporting, decision support, productivity) that increase perceived value</td></tr>
+<tr><td>MODULE 8: Professional Development using AI</td><td>Yes</td><td>Career Readiness (LinkedIn + Resume/Job Search)</td><td></td></tr>
+<tr><td>MODULE 9: Soft Skills Development using AI</td><td>No</td><td>Not explicitly covered in current curriculum</td><td>Operational ROI use-cases (automation, reporting, decision support, productivity) that increase perceived value</td></tr>
+<tr><td>MODULE 10: Protecting Workspace Data while using AI</td><td>No</td><td>Module 8 covers ethics/safety, but not workplace data protection practices/tools</td><td>Operational ROI use-cases (automation, reporting, decision support, productivity) that increase perceived value</td></tr>
+<tr><td>MODULE 11: Microsoft Co-Pilot for AI Enhanced Productivity (Optional)</td><td>No</td><td>Not explicitly covered in current curriculum</td><td>Operational ROI use-cases (automation, reporting, decision support, productivity) that increase perceived value</td></tr>
+<tr><td>MODULE 12: Workflow Automation using AI (Optional)</td><td>Yes</td><td>Module 6 (Workflow Automation with Make.com) + Module 5 (Agentic AI)</td><td></td></tr></tbody></table>
+      <div class="callout">
+        <p><b>Pattern:</b> We cover GenAI foundations + prompting + multimodal creation + agents + automation. Gaps are “workplace productivity” modules (data analysis, market research, project management, soft skills coaching, and workspace data protection), which are typically the strongest pull for working professionals.</p>
+      </div>
+    </section>
+
+    <section class="section" id="changes">
+      <h2>Recommended change-set (not a full rewrite)</h2>
+      <p>These changes keep the <b>90 hours</b> structure, but rebalance “what learners feel” and “what working professionals need” without removing GenAI fundamentals.</p>
+
+      <h3 style="margin:14px 0 8px; font-size:15px;">1) Reposition the program outcome (single-line outcome)</h3>
+      <p><b>Outcome suggestion:</b> “Learners can use GenAI to automate day-to-day work, build simple AI workflows and assistants without coding, and present a portfolio (resume + LinkedIn + capstone) aligned to real roles.”</p>
+
+      <h3 style="margin:14px 0 8px; font-size:15px;">2) Curriculum rebalance (what to decrease vs increase)</h3>
+      <ul>
+        <li><b>Decrease</b> time spent purely on text/audio/video creation demos; keep only what is needed to build “AI at work” competency.</li>
+        <li><b>Increase</b> operational automation: Make.com (and/or alternatives), AI agents for tasks, and “workflow thinking” using real office scenarios (reports, follow-ups, CRM notes, meeting summaries, email drafts, SOP creation).</li>
+        <li><b>Add</b> 1–2 short modules (or sub-modules) focused on: AI for data analysis (Excel/Sheets + dashboards), market research outputs, and project management support.</li>
+      </ul>
+
+      <h3 style="margin:14px 0 8px; font-size:15px;">3) Brochure/tooling fix (conversion lever)</h3>
+      <ul>
+        <li>Replace “<b>12 tools</b>” framing with “Core toolkit + demo toolkit”: show <b>12</b> core tools taught deeply, plus <b>20+</b> tools demonstrated across use-cases (so the brochure perception returns closer to the earlier <b>30 tools</b> promise without inflating teaching time).</li>
+        <li>Make “no-code automation” and “AI at work” the hero sections on the brochure, not just multimodal creation.</li>
+      </ul>
+
+      <h3 style="margin:14px 0 8px; font-size:15px;">4) Career assistance packaging (expectation at <b>₹28,000</b>)</h3>
+      <ul>
+        <li>Define a visible career deliverable pack: resume + LinkedIn + 1 capstone narrative + portfolio repository, with clear checkpoints and review rubrics.</li>
+        <li>Position Career Readiness as outcomes (deliverables), not sessions (hours).</li>
+      </ul>
+
+      <div class="footer">
+        Notes: This report intentionally avoids prescribing a brand-new curriculum. It identifies the smallest set of shifts required to (a) match the <b>30%</b> working professional segment’s expectations, and (b) increase perceived value for the <b>70%</b> fresher base.
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
